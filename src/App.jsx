@@ -5,6 +5,7 @@ import {ChampionPage} from './pages/ChampionPages/ChampionPage'
 
 
 import "./App.css"
+import { ChampionDetails } from "./pages/ChampionPages/ChampionDetails"
 function App() {
 
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="/champions">
           <Route index element={<ChampionPage />}/>
+          <Route path=":championId"  element={<ChampionDetails />}/>
 
         </Route>
       </Route>
