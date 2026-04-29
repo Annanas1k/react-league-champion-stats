@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: var(--riot-black);
+  background-color: var(--riot-gray);
   color: white;
   margin: 0;
   font-family: "Exo 2", sans-serif;

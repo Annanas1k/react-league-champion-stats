@@ -5,7 +5,7 @@ import { ChampContext } from "./createContext"
 export const ChampProvider = ({children}) =>{
     const [champions, setChampions] = useState([])
     const [loading, setLoading] = useState(true)
-    const [verion, setVersion] = useState(null)
+    const [version, setVersion] = useState(null)
 
     useEffect(()=>{
         const loadData = async () =>{
@@ -14,9 +14,9 @@ export const ChampProvider = ({children}) =>{
                 setVersion(latestVersion)
 
                 const cachedData = localStorage.getItem('champions_data')
-                const cachedVerion = localStorage.getItem('champion_version')
+                const cachedVersion = localStorage.getItem('champions_version')
 
-                if(cachedData && cachedVerion === latestVersion){
+                if(cachedData && cachedVersion === latestVersion){
                     setChampions(JSON.parse(cachedData))
                     setLoading(false)
                 } else {
@@ -39,8 +39,8 @@ export const ChampProvider = ({children}) =>{
 
 
     const  value = useMemo(()=>({
-        champions, loading, verion
-    }), [champions, loading, verion])
+        champions, loading, version
+    }), [champions, loading, version])
 
     return (
         <ChampContext.Provider value={value}>
