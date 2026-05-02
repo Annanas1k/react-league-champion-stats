@@ -11,7 +11,7 @@ export const ChampionCard = ({champion}) => {
         <div className="col-6 col-md-4 col-lg-2 mb-4">
             <div 
                 className="card bg-riot-gray border-0 h-100 champion-hover-card"
-                onClick={()=>navigate(`/champion/${champion.id}`)}
+                onClick={()=>navigate(`/champions/${champion.id}`)}
                 style={{cursor: "pointer", transition: "transform 0.2s", width: "300px"}}>
                 <img src={cardImageUrl} alt={champion.name} className="card-img-top"/>
                 <div className="card-body p-2 text-center">

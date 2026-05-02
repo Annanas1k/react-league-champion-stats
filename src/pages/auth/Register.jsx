@@ -1,0 +1,82 @@
+import { useState } from "react"
+import {useUserContext} from '../../hooks/useUserContext'
+import { useNavigate, Link } from "react-router"
+
+
+export const Register = () =>{
+    const [formData, setFormData] = useState({username: '', email: '', password: ''})
+    const {register, error, loading} = useUserContext()
+    const navigate = useNavigate()
+
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+        try{
+            register(formData)
+            navigate('/')
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    return (
+        <div className="container-fluid vh-100 bg-black text-white">
+            <div className="row h-100">
+                <div className="col-md-4 d-flex align-items-center justify-content-center p-5">
+                    <div className="w-100" style={{ maxWidth: '350px' }}>
+                        <h2 className="fw-bold mb-4 italic">CREATE ACCOUNT</h2>
+                        
+                        <form onSubmit={handleSubmit}>
+                            <div className="mb-3">
+                                <input 
+                                    type="text" 
+                                    className="form-control bg-dark border-0 text-white p-3" 
+                                    placeholder="USERNAME" 
+                                    onChange={(e) => setFormData({...formData, username: e.target.value})} 
+                                    required 
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <input 
+                                    type="email" 
+                                    className="form-control bg-dark border-0 text-white p-3" 
+                                    placeholder="EMAIL" 
+                                    onChange={(e) => setFormData({...formData, email: e.target.value})} 
+                                    required 
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <input 
+                                    type="password" 
+                                    className="form-control bg-dark border-0 text-white p-3" 
+                                    placeholder="PASSWORD" 
+                                    onChange={(e) => setFormData({...formData, password: e.target.value})} 
+                                    required 
+                                />
+                            </div>
+                            
+                            {error && <div className="text-danger small mb-3 fw-bold">{error.toUpperCase()}</div>}
+                            
+                            <button type="submit" className="btn btn-danger w-100 p-3 fw-bold mb-4" disabled={loading}>
+                                {loading ? 'CREATING...' : 'CREATE ACCOUNT'}
+                            </button>
+                        </form>
+
+                        <div className="text-center">
+                            <Link to="/login" className="text-secondary text-decoration-none small fw-bold">ALREADY HAVE AN ACCOUNT?</Link>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-md-8 d-none d-md-block p-0">
+                    <div style={{
+                        backgroundImage: `url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg')`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        height: '100%'
+                    }}></div>
+                </div>
+            </div>
+        </div>
+    )
+}
