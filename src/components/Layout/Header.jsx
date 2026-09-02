@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router";
-import { FaSignInAlt, FaUser, FaGlobe } from "react-icons/fa";
+import { FaUser, FaGlobe } from "react-icons/fa";
 import { GiDervishSwords } from "react-icons/gi";
 import { useUserContext } from '../../hooks/useUserContext'
 import { useLanguageContext } from '../../hooks/useLanguageContext'
